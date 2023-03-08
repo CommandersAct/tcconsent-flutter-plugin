@@ -41,6 +41,13 @@ dependencies:
       ref: master
 ```
 
+### iOS :
+Since Flutter doesn't currently fully support SPM dependency, you'll need to manually link our TCCore.xcframework to both your `tc_serverside_plugin` target (and any other tc_* target that you are using) & your `Runner` target on xcode. 
+
+More info here :   
+
+[xcframework Linking](https://github.com/CommandersAct/TCMobileDemo-flutter/blob/master/xcframework_linking.md)
+
 Simillar to Android and iOS SDKs, you'll need to create a TCConsent() instance and then initialise it by calling `setSiteIDPrivacyID` method.
 
 Please have a look on `lib/tc_consent.dart` for more details. 
