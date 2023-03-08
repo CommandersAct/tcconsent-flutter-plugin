@@ -1,0 +1,6 @@
+framework module TCConsent {
+  umbrella header "TCConsent.h"
+
+  export *
+  module * { export * }
+}

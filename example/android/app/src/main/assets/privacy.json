@@ -1,0 +1,173 @@
+{
+    "information": {
+        "update": "2021-03-12",
+        "version": "121",
+        "vendors": "15,48,501,506,520,539,512,895",
+        "consentDurationInMonths": "6",
+        "significantChanges": "true"
+    },
+    "texts": {
+        "generic": {
+            "saveButton": "Sauvegarder",
+            "detailButton": "Détails",
+            "acceptAllButton": "Tout accepter",
+            "refuseAllButton": "Tout refuser",
+            "vendorButton": "Partenaires",
+            "purposeButton": "Fonctionnalités",
+            "legalButton": "Déscription légale",
+            "backButton": "Retour",
+            "purposeDef": "Finalités",
+            "customCategoriesDef": "Nos propres Finalités",
+            "consentDef": "Consentement",
+            "legIntPurposeDef": "Intérêt légitime",
+            "flexiblePurposeDef": "Finalités flexible",
+            "specialPurposeDef": "Finalités spéciale",
+            "featureDef": "Fonctionnalités",
+            "specialFeatureDef": "Fonctionnalités spéciale",
+            "partnersLinkText": "nos partenaires",
+            "relatedVendorsButton": "vendeur associés",
+            "month": "months",
+            "day": "days",
+            "seconds": "seconds",
+            "hours": "hours"
+        },
+        "popup": {
+            "title": "Nous respectons votre vie privée",
+            "content": "Nous et nos partenaires utilisons des téchnologies pour récolter vos données",
+            "purposeTitle": "Nous et nos partenaires",
+            "specialPurposeTitle": "Nous avons besoin de votre consentement",
+            "featureTitle": "Pour certaines de ces fonctionnalités.",
+            "specialFeatureTitle": "Pour certaines de ces fonctionnalités."
+        },
+        "purposes": {
+            "title": "Comment nous utilisons vos données",
+            "content": "Changez vos préférences."
+        },
+        "vendors": {
+            "title": "Voici les partenaires de la liste IAB.",
+            "content": "Pour chacun d'entre eux vous pouvez affiner vos préférences",
+            "privacyPolicyText": "Politique de confidentialité",
+            "deviceStorageTitle": "Storage Type:",
+            "deviceStorageCookieLifetime": "Cookie lifetime: ",
+            "deviceStorageOther": "Others",
+            "deviceStorageCookies": "Cookies"
+        },
+        "others": {
+            "title_purpose": "Other categories",
+            "title_vendors": "Other vendors"
+        }
+    },
+    "texts_fr": {
+        "generic": {
+            "saveButton": "Sauvegarder",
+            "detailButton": "Détails",
+            "acceptAllButton": "Tout accepter",
+            "refuseAllButton": "Tout refuser",
+            "vendorButton": "Partenaires",
+            "purposeButton": "Fonctionnalités",
+            "legalButton": "Déscription légale",
+            "backButton": "Retour",
+            "purposeDef": "Finalités",
+            "consentDef": "Consentement",
+            "legIntPurposeDef": "Intérêt légitime",
+            "flexiblePurposeDef": "Finalités flexible",
+            "specialPurposeDef": "Finalités spéciale",
+            "featureDef": "Fonctionnalités",
+            "specialFeatureDef": "Fonctionnalités spéciale",
+            "partnersLinkText": "nos partenaires",
+            "relatedVendorsButton": "vendeur associés",
+            "month": "mois",
+            "day": "jours",
+            "seconds": "secondes",
+            "hours": "heures"
+        },
+        "popup": {
+            "title": "Nous respectons votre vie privée",
+            "content": "Nous et nos partenaires utilisons des téchnologies pour récolter vos données",
+            "purposeTitle": "Nous et nos partenaires",
+            "specialPurposeTitle": "Nous avons besoin de votre consentement",
+            "featureTitle": "Pour certaines de ces fonctionnalités.",
+            "specialFeatureTitle": "Pour certaines de ces fonctionnalités."
+        },
+        "purposes": {
+            "title": "Comment nous utilisons vos données",
+            "content": "Changez vos préférences."
+        },
+        "vendors": {
+            "title": "Voici les partenaires de la liste IAB.",
+            "content": "Pour chacun d'entre eux vous pouvez affiner vos préférences",
+            "privacyPolicyText": "Politique de confidentialité",
+            "deviceStorageTitle": "Type de stockage:",
+            "deviceStorageCookieLifetime": "Durée du cookie: ",
+            "deviceStorageOther": "Autres",
+            "deviceStorageCookies": "Cookies"
+        },
+        "others": {
+            "title_purpose": "Other categories",
+            "title_vendors": "Other vendors"
+        }
+    },
+    "categories": [{
+        "related_vendors": [1],
+        "name": "Statistics",
+        "ID": "1",
+        "description": "These cookies allow us analyze user behavior on the site, measure and improve performance and the quality of our service."
+    },
+        {
+            "related_vendors": [2],
+            "name": "Advertising",
+            "ID": "2",
+            "description": "These cookies allow us display adverts matching your interests on the websites you visit."
+        },
+        {
+            "related_vendors": [],
+            "name": "cat with sub cat",
+            "ID": "3",
+            "description": "Here you can select the vendors.",
+            "subcategories": [{
+                "name": "sub1",
+                "ID": "4",
+                "description": "We need this.",
+                "related_vendors": [1]
+            },
+                {
+                    "name": "sub2",
+                    "ID": "5",
+                    "description": "We also might need this.",
+                    "related_vendors": [2]
+                }
+            ]
+        }
+    ],
+    "vendors": [{
+        "name": "Commanders Act",
+        "ID": "1",
+        "description": "Allow Commanders Act",
+        "privacy_policy": "http://commandersact.com/privacypolicy"
+    },
+        {
+            "name": "Another Vendor",
+            "ID": "2",
+            "description": "The desc of another vendor",
+            "privacy_policy": "http://anothervendor.free.fr/privacypolicy"
+        }
+    ],
+    "components": {
+        "firstLayerButton": ["Detail", "AcceptAll", "RefuseAll"],
+        "secondLayerButton": ["Save", "AcceptAll", "RefuseAll"]
+    },
+    "customisation": {
+        "content": {
+            "fontcolor": "#111215",
+            "backgroundcolor": "#FFFFFF",
+            "bordercolor": "#414142"
+        },
+        "button": {
+            "fontcolor": "#ffffff",
+            "backgroundcolor": "#0A78E3",
+            "disabledBackground": "#aeb5bb",
+            "linkcolor": "#0A78E3"
+        },
+        "order": ["Custom", "IAB"]
+    }
+}

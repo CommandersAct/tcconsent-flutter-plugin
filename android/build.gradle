@@ -1,0 +1,37 @@
+group 'com.tagcommander.tc_mobile_flutter_plugin'
+version '1.0'
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.1.2'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        minSdkVersion 21
+        multiDexEnabled true
+    }
+}
+
+dependencies{
+    //Commanders Act SDK dependencies
+    api 'com.tagcommander.lib:core:5.+'
+    api 'com.tagcommander.lib:Consent:5.+'
+}
