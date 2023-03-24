@@ -1,0 +1,173 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7 (swiftlang-5.7.0.127.4 clang-1400.0.29.50)
+// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name TCIAB
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import Foundation
+import Swift
+@_exported import TCIAB
+import _Concurrency
+import _StringProcessing
+import os
+extension Swift.String {
+  public var base2Padded: Swift.String {
+    get
+  }
+  public func toData() -> Foundation.Data?
+}
+@_inheritsConvenienceInitializers @objc public class ConsentString : ObjectiveC.NSObject {
+  @objc public var consentString: Swift.String {
+    @objc get
+    @objc set
+  }
+  @objc public var consentData: Foundation.Data
+  @objc override required dynamic public init()
+  @objc convenience public init(consentData: Foundation.Data)
+  @objc convenience public init(consentString: Swift.String)
+  @objc public var cmpId: Swift.Int {
+    @objc get
+  }
+  @objc public var consentScreen: Swift.Int {
+    @objc get
+  }
+  @objc public var consentTime: Foundation.Date {
+    @objc get
+  }
+  @objc public var consentLanguage: Swift.String {
+    @objc get
+  }
+  @objc public var parsedPurposesConsent: Swift.String {
+    @objc get
+  }
+  @objc public var parsedVendorConsent: Swift.String {
+    @objc get
+  }
+  @objc public var purposesAllowed: [Swift.Int8] {
+    @objc get
+  }
+  @objc public func purposeAllowed(forPurposeId purposeId: Swift.Int8) -> Swift.Bool
+  @objc public func isVendorAllowed(vendorId: Swift.Int) -> Swift.Bool
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class TCCMPStorage : ObjectiveC.NSObject {
+  @objc public static func saveConsentString(consent: Swift.String)
+  @objc public static func getConsentString() -> Swift.String
+  @objc public class func setCMPSDKID()
+  @objc public static func setSubjectToGDPR(present: Swift.Int)
+  @objc public static func setCMPSDKVersion(version: Swift.Int)
+  @objc public static func setPolicyVersion(version: Swift.Int)
+  @objc public static func setPublisherCC(code: Swift.String?)
+  @objc public static func setPurposeOneTreatement(special: Swift.Int)
+  @objc public static func setNonStdStack(nonStd: Swift.Int)
+  @objc public static func setVendorConsent(consent: Swift.String)
+  @objc public static func setVendorLegitimateInterest(consent: Swift.String)
+  @objc public static func setPurposeConsent(consent: Swift.String)
+  @objc public static func setPurposeLegitimateInterest(consent: Swift.String)
+  @objc public static func setSpecialFeaturesConsent(consent: Swift.String)
+  @objc public static func setCreatedDate(date: Swift.String)
+  @objc public static func getCreatedDate() -> Swift.String
+  @objc public static func setACString(value: Swift.String)
+  @objc public static func getACString() -> Swift.String
+  @objc public static func setPublisherRestrictions(restriction: Foundation.NSDictionary)
+  @objc public static func resetIABData()
+  @objc public static func resetACString()
+  @objc override dynamic public init()
+  @objc deinit
+}
+public class PublisherPurposesConsentBuilder {
+  public init()
+  public func withPurposesConsent(purposesConsent: [Swift.Int])
+  public func withPurposesLITransparency(pubPrposesLITransparency: [Swift.Int])
+  public func withCustomPurposes(customPurposesConsent: [Swift.Int])
+  public func withCustomPurposesLegInterests(customPurposesLITransparency: [Swift.Int])
+  public func build() -> Swift.String
+  public func getPublisherPurposesString() -> Swift.String
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class CSConstants : ObjectiveC.NSObject {
+  @objc public static let TCFVersion: Swift.Int8
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class ConsentStringBuilder : ObjectiveC.NSObject {
+  @objc public var consentString: Swift.String
+  @objc public var consentData: Foundation.Data
+  @objc override dynamic public init()
+  @objc public func setConsentRecordCreatedOn(created: Foundation.Date)
+  @objc public func setConsentRecordLastUpdated(updated: Foundation.Date)
+  @objc public func setCmpID(ID: Swift.Int)
+  @objc public func setCmpVersion(version: Swift.Int)
+  @objc public func setConsentScreenID(screenID: Swift.Int)
+  @objc public func setConsentLanguage(language: Swift.String)
+  @objc public func setVendorListVersion(version: Swift.Int)
+  @objc public func setMaxVendorID(ID: Swift.Int)
+  @objc public func setVendorEncodingType(type: Swift.Int)
+  @objc public func setAllowedPurposes(purposes: Foundation.IndexSet)
+  @objc public func setRangeEntries(entries: Foundation.IndexSet)
+  @objc public func setDefaultConsent(defaultConsent: Swift.Bool)
+  @objc public func buildData()
+  @objc deinit
+}
+public class OOBVendorSegmentBuilder {
+  public init()
+  public func withMaxVendorId(maxVendorId: Swift.Int)
+  public func withEncodingType(encodingType: Swift.Int)
+  public func withBitFieldEntries(bitFieldEntries: [Swift.Int])
+  public func withRangeEntries(rangeEntries: [TCIAB.RangeEntryV2])
+  public func isForAllowedVendors(segmentType: Swift.Bool)
+  public func build() -> Swift.String
+  public func getOOBSegmentString() -> Swift.String
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class CoreStringBuilder : ObjectiveC.NSObject {
+  @objc public func setConsentRecordCreatedOn(timestamp: Foundation.Date)
+  @objc public func setConsentRecordLastUpdatedOn(timestamp: Foundation.Date)
+  @objc public func setCmpID(ID: Swift.Int)
+  @objc public func setCmpVersion(version: Swift.Int)
+  @objc public func setConsentScreenID(ID: Swift.Int)
+  @objc public func setConsentLanguage(language: Swift.String?)
+  @objc public func setVendorListVersion(version: Swift.Int)
+  @objc public func setTcfPolicyVersion(version: Swift.Int)
+  @objc public func setIsServiceSpecific(value: Swift.Int)
+  @objc public func isUsingNonStandardStacks(value: Swift.Int)
+  @objc public func setSpecialFeatureOptInts(ins: [Swift.Int])
+  @objc public func setPurposesConsent(purposes: [Swift.Int])
+  @objc public func setPurposesLITransparency(purposes: [Swift.Int])
+  @objc public func setPurposeOneTreatment(value: Swift.Int)
+  @objc public func setPublisherCC(code: Swift.String?)
+  @objc public func setGoogleAcceptedVendors(ids: [Swift.Int])
+  @objc public func setVendorConsentSectionMaxVendorId(maxVendorId: Swift.Int)
+  @objc public func VendorConsentSectionEncodingType(vendorEncodingType: Swift.Int)
+  @objc public func setVendorConsentSectionBitField(entries: [Swift.Int])
+  public func setVendorConsentSectionRangeEntries(entries: [TCIAB.RangeEntryV2])
+  @objc public func setVendorLegitimateInterestSectionMaxVendorId(maxVendorId: Swift.Int)
+  @objc public func setVendorLegitimateInterestSectionEncodingType(encodingType: Swift.Int)
+  @objc public func setVendorLegitimateInterestSectionBitField(entries: [Swift.Int])
+  public func setVendorLegitimateInterestSectionRangeEntries(entries: [TCIAB.RangeEntryV2])
+  public func setPubRestrictions(entries: [TCIAB.PubRestrictionEntry])
+  public func getConsentString() -> Swift.String
+  @objc public func buildConsentString(withPublisherTC: Swift.Int) -> Swift.String
+  @objc public func writeTCData()
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class RangeEntryV2 {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class BuildHelper {
+  public static func pad(string: Swift.String, toSize: Swift.Int) -> Swift.String
+  public static func addFillBits(rawString raw: Swift.String) -> Swift.String
+  public static func buildBase64StringPresentation(rawData raw: Foundation.Data) -> Swift.String
+  public static func setSixBitString(size: Swift.Int, to: Swift.String) -> Swift.String
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class ACStringBuilder : ObjectiveC.NSObject {
+  @objc public func buildACString(googleProvidersIds: [Swift.Int]) -> Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class PubRestrictionEntry {
+  public func size() -> Swift.Int
+  public func toString() -> Swift.String
+  public func valid(maxVendorId: Swift.Int) -> Swift.Bool
+  @objc deinit
+}
