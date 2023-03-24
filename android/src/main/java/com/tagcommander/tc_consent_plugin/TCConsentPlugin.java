@@ -10,6 +10,10 @@ import com.tagcommander.lib.consent.ETCConsentSource;
 import com.tagcommander.lib.consent.TCConsent;
 import com.tagcommander.lib.consent.TCPrivacyCallbacks;
 import com.tagcommander.lib.consent.TCPrivacyCenter;
+import com.tagcommander.lib.core.TCUser;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,13 +43,17 @@ public class TCConsentPlugin implements FlutterPlugin, MethodCallHandler, TCPriv
 
   @Override
   public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
+    @SuppressWarnings("unchecked")
+    HashMap<String, Object> schemes =  new HashMap<>();
+
     switch (call.method)
     {
       case "setSiteIDPrivacyID":
         Integer siteID = call.argument("siteID");
         Integer privacyID = call.argument("privacyID");
         initTCConsent(siteID, privacyID, context);
-        result.success(null);
+        schemes.put("user", getTCUserJson());
+        result.success(schemes);
         break;
       case "refuseAllConsent":
         TCConsent.getInstance().refuseAllConsent();
@@ -70,7 +78,8 @@ public class TCConsentPlugin implements FlutterPlugin, MethodCallHandler, TCPriv
         Integer siteId = call.argument("siteID");
         Integer privacyId = call.argument("privacyID");
         TCConsent.getInstance().initWithCustomPCM(siteId, privacyId, context);
-        result.success(null);
+        schemes.put("user", getTCUserJson());
+        result.success(schemes);
         break;
       case "setConsentDuration":
         Double consentDuration = call.argument("months");
@@ -82,12 +91,12 @@ public class TCConsentPlugin implements FlutterPlugin, MethodCallHandler, TCPriv
         result.success(null);
         break;
       case "saveConsentFromPopUp":
-        Map popUpConsent = call.argument("consent");
+        Map<String, String> popUpConsent = call.argument("consent");
         TCConsent.getInstance().saveConsentFromPopUp(popUpConsent);
         result.success(null);
         break;
       case "saveConsent":
-        Map consent = call.argument("consent");
+        Map<String, String> consent = call.argument("consent");
         TCConsent.getInstance().saveConsent(consent);
         result.success(null);
         break;
@@ -95,7 +104,7 @@ public class TCConsentPlugin implements FlutterPlugin, MethodCallHandler, TCPriv
         ETCConsentSource source = call.argument("source").equals("ETCConsentSource.popUp") ? ETCConsentSource.Popup : ETCConsentSource.PrivacyCenter;
         String actionValue = call.argument("action");
         ETCConsentAction action = actionValue.equals("ETCConsentAction.acceptAll") ? ETCConsentAction.AcceptAll : (actionValue.equals("ETCConsentAction.refuseAll") ? ETCConsentAction.RefuseAll : ETCConsentAction.Save);
-        Map saveConsent = call.argument("consent");
+        Map<String, String> saveConsent = call.argument("consent");
         TCConsent.getInstance().saveConsentFromConsentSourceWithPrivacyAction(saveConsent, source, action);
         result.success(null);
         break;
@@ -128,7 +137,8 @@ public class TCConsentPlugin implements FlutterPlugin, MethodCallHandler, TCPriv
         break;
       case "resetSavedConsent":
         TCConsent.getInstance().resetSavedConsent();
-        result.success(null);
+        schemes.put("user", getTCUserJson());
+        result.success(schemes);
         break;
       case "setLanguage":
         String languageCode = call.argument("languageCode");
@@ -140,6 +150,24 @@ public class TCConsentPlugin implements FlutterPlugin, MethodCallHandler, TCPriv
     }
   }
 
+  private String getTCUserJson()
+  {
+    try
+    {
+      TCUser user = TCUser.getInstance();
+      JSONObject json = TCUser.getInstance().getJsonObject();
+      json.put("consentID", user.consentID);
+      json.put("consent_vendors", new JSONObject(user.getConsentVendors()));
+      json.put("consent_categories", new JSONObject(user.getConsentCategories()));
+      json.put("external_consent", new JSONObject(user.getExternalConsent()));
+      return json.toString();
+    } catch (JSONException e)
+    {
+      e.printStackTrace();
+    }
+    return "";
+  }
+
   private void initTCConsent(int siteID, int privacyId, Context context)
   {
     TCConsent.getInstance().registerCallback(this);
@@ -147,9 +175,13 @@ public class TCConsentPlugin implements FlutterPlugin, MethodCallHandler, TCPriv
   }
 
   @Override
-  public void consentUpdated(Map<String, String> map)
+  public void consentUpdated(Map<String, String> consent)
   {
-    channel.invokeMethod("consentUpdated", new HashMap().put("consent", map));
+    HashMap<String, Object> map = new HashMap<>();
+    map.put("consent", consent);
+    map.put("user", getTCUserJson());
+
+    channel.invokeMethod("consentUpdated", map);
   }
 
   @Override

@@ -35,6 +35,7 @@
       int privacyID = [[call.arguments objectForKey: @"privacyID"] intValue];
       [[TCMobileConsent sharedInstance] setSiteID: siteID andPrivacyID: privacyID];
       [[TCMobileConsent sharedInstance] registerCallback: self];
+      result(@{@"user" : [self getTCUserDictionary]});
   }
   else if ([@"showPrivacyCenter" isEqualToString:call.method])
   {
@@ -61,6 +62,7 @@
       int privacyID = [[call.arguments objectForKey: @"privacyID"] intValue];
       [[TCMobileConsent sharedInstance] customPCMSetSiteID: siteID andPrivacyID: privacyID];
       [[TCMobileConsent sharedInstance] registerCallback: self];
+      result(@{@"user" : [self getTCUserDictionary]});
   }
   else if ([@"setConsentDuration" isEqualToString:call.method])
   {
@@ -88,6 +90,7 @@
       ETCConsentAction action = [actionValue isEqualToString: @"ETCConsentAction.acceptAll"] ? AcceptAll : ([actionValue isEqualToString: @"ETCConsentAction.refuseAll"] ? RefuseAll : Save);
       NSDictionary *consent = [call.arguments objectForKey: @"consent"];
       [[TCMobileConsent sharedInstance] saveConsent: consent fromConsentSource: source withPrivacyAction: action];
+      result(@{@"user" : [self getTCUserDictionary]});
   }
   else if ([@"statEnterPCToVendorScreen" isEqualToString:call.method])
   {
@@ -124,6 +127,7 @@
   else if ([@"resetSavedConsent" isEqualToString:call.method])
   {
       [[TCMobileConsent sharedInstance] resetSavedConsent];
+      result(@{@"user" : [self getTCUserDictionary]});
   }
   else if ([@"setLanguage" isEqualToString:call.method])
   {
@@ -136,9 +140,21 @@
   }
 }
 
+- (NSDictionary *) getTCUserDictionary
+{
+    TCUser *user = [TCUser sharedInstance];
+    NSMutableDictionary *dict = [[user getJsonObject] mutableCopy];
+    [dict setValue: user.consentID forKey:@"consentID"];
+    [dict setValue: user.consent_vendors forKey:@"consent_vendors"];
+    [dict setValue: user.consent_categories forKey:@"consent_categories"];
+    [dict setValue: user.external_consent forKey:@"external_consent"];
+    
+    return dict;
+}
+
 - (void) consentUpdated: (NSDictionary *) consent
 {
-    [self.channel invokeMethod: @"consentUpdated" arguments: @{@"consent" : consent}];
+    [self.channel invokeMethod: @"consentUpdated" arguments: @{@"consent" : consent, @"user" : [self getTCUserDictionary]}];
 }
 
 /**

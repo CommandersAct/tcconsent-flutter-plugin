@@ -11,22 +11,7 @@ While we have made every effort to ensure the quality and stability of this beta
 
 It is important to have a look on both [Android](https://github.com/CommandersAct/AndroidV5/tree/master/TCConsent) and [IOS](https://github.com/CommandersAct/iosv5/tree/master/TCConsent) documentation to understand the basic functionning of the library. 
 
-
-## Setup :
-
-After adding the sdk to your project, and depending on your use case, you'll need to :
-
-Set the needed jsons (depending on your use case) in the following paths :
-
-- for iOS : ```app/ios/Runner/*.json```  (& make sure that they are included in your Runner main bundle).
-- for Android : ```app/android/app/src/main/assets/*.json```.
-
-Needed Jsons : 
-- [if you are using our Privacy Center ] : Make sure you've put your version of the `privacy.json`
-
-- [if you are using IAB] : Make sure to have to do the same for the `vendor-list.json`, `purposes-*.json` (if you are using a translation) & `google-atp-list.json` if you wanna use google ACString (more info in the official doc mentionned above).
-
-## Usage : 
+## Installation : 
 
 We'll be releasing this plugin on pub.dev once we finish our beta phase. as for now, you'll need to have a git plugin dependency. 
 
@@ -41,16 +26,71 @@ dependencies:
       ref: master
 ```
 
-### iOS :
-Since Flutter doesn't currently fully support SPM dependency, you'll need to manually link our TCCore.xcframework to both your `tc_serverside_plugin` target (and any other tc_* target that you are using) & your `Runner` target on xcode. 
+if you're using IAB, you'll need to use `TCConsent_IAB` variant available on `with_iab` branch.
+
+```
+dependencies:
+
+  tc_consent_plugin:
+    git:
+      url: https://github.com/CommandersAct/tc-consent-plugin.git
+      ref: with_iab
+```
+
+### [iOS only] manually linking TCCore :
+Since Flutter doesn't currently fully support SPM dependency, you'll need to manually link our TCCore.xcframework to both your `tc_consent_plugin` target (and any other tc_* plugin target that you are using) & your `Runner` target on xcode. 
 
 More info here :   
 
 [xcframework Linking](https://github.com/CommandersAct/TCMobileDemo-flutter/blob/master/xcframework_linking.md)
 
+## Configuration files :
+
+Depending on your use case, you may need to include the following json files into your app : 
+
+- **if you are using our Privacy Center**: 
+
+   Make sure you've put your version of the `privacy.json`
+
+- **if you are using IAB**: 
+   
+   you'll need an offline version of `vendor-list.json`, `purposes-*.json` (if you are using a translation) & `google-atp-list.json` if you wanna use google ACString (please check native documentation for more info).
+   
+
+jsons files path : 
+
+- **iOS** : ```app/ios/Runner/*.json```  
+
+  make sure that they're included in your Runner main bundle.
+
+- **Android** : ```app/android/app/src/main/assets/*.json```.
+
+### Usage : 
+
 Simillar to Android and iOS SDKs, you'll need to create a TCConsent() instance and then initialise it by calling `setSiteIDPrivacyID` method.
 
-Please have a look on `lib/tc_consent.dart` for more details. 
+Please have a look on `lib/tc_consent.dart` & `example/lib/main.dart` for more details. 
+
+```
+  TCConsent consent = TCConsent();
+  consent.setSiteIDPrivacyID(SITE_ID, PRIVACY_ID);
+```
+
+### Privacy Callbacks : 
+
+Privacy callbacks are available as parameters in your TCConsent instance. 
+
+```
+class TCConsent
+{
+....
+  static Function(Map? m)? consentUpdated;
+  static Function? consentOutdated;
+  static Function? consentCategoryChanged;
+  static Function? significantChangesInPrivacy;
+
+....
+```
 
 # Demo app :
 

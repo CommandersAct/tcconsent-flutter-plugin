@@ -122,5 +122,7 @@ extern NSString *const TC_OPT_IN_TO_ALL_VENDORS;
 extern NSString *const TC_TYPE_ACTION;
 extern NSString *const TC_USER_AGENT;
 
+extern NSString *const SDK_CONSENT_VERSION;
+
 @end
 #endif

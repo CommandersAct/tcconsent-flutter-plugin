@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:flutter/services.dart';
-import 'package:tc_consent_plugin/tc_consent_plugin.dart';
+import 'package:tc_consent_plugin/tc_consent.dart';
 
 void main() {
   runApp(const MyApp());

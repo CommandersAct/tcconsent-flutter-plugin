@@ -1,8 +1,9 @@
 
-import 'dart:ffi';
+import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:tccore_plugin/TCUser.dart';
 
 enum ETCConsentSource {
   popUp, privacyCenter
@@ -23,14 +24,17 @@ class TCConsent
   Future<void> setSiteIDPrivacyID(int siteID, int privacyID) async
   {
     tcChannel.setMethodCallHandler(privacyCallbackHandler);
-    await tcChannel.invokeMethod('setSiteIDPrivacyID', {'siteID': siteID, 'privacyID': privacyID});
+    Map schemes = await tcChannel.invokeMethod('setSiteIDPrivacyID', {'siteID': siteID, 'privacyID': privacyID});
+    _refreshTCUser(schemes);
   }
 
-  Future<void> acceptAllConsent() async {
+  Future<void> acceptAllConsent() async
+  {
     await tcChannel.invokeMethod('acceptAllConsent');
   }
 
-  Future<void> refuseAllConsent() async {
+  Future<void> refuseAllConsent() async
+  {
     await tcChannel.invokeMethod('refuseAllConsent');
   }
 
@@ -46,7 +50,8 @@ class TCConsent
 
   Future<void> initWithCustomPCM(int siteID, int privacyID) async
   {
-    await tcChannel.invokeMethod('initWithCustomPCM', {'siteID' : siteID, 'privacyID' : privacyID});
+    Map schemes = await tcChannel.invokeMethod('initWithCustomPCM', {'siteID' : siteID, 'privacyID' : privacyID});
+    _refreshTCUser(schemes);
   }
 
   Future<void> setConsentDuration(double months) async
@@ -106,7 +111,8 @@ class TCConsent
 
   Future<void> resetSavedConsent() async
   {
-    await tcChannel.invokeMethod('resetSavedConsent');
+    Map schemes = await tcChannel.invokeMethod('resetSavedConsent');
+    _refreshTCUser(schemes);
   }
 
   Future<void> setLanguage(String languageCode) async
@@ -124,6 +130,7 @@ class TCConsent
     switch (methodCall.method)
     {
       case "consentUpdated" :
+        _refreshTCUser(methodCall.arguments);
         consentUpdated?.call(methodCall.arguments['consent']);
         break;
       case "consentOutdated" :
@@ -137,6 +144,18 @@ class TCConsent
         break;
       default:
         return;
+    }
+  }
+
+  void _refreshTCUser(Map schemes)
+  {
+    if (defaultTargetPlatform  == TargetPlatform.android)
+    {
+      TCUser.fromJson(jsonDecode(schemes["user"]));
+    }
+    else if (defaultTargetPlatform  == TargetPlatform.iOS)
+    {
+      TCUser.fromJson(schemes["user"]);
     }
   }
 }
