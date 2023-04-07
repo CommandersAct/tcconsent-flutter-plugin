@@ -40,10 +40,6 @@ dependencies:
 ### [iOS only] manually linking TCCore :
 Since Flutter doesn't currently fully support SPM dependency, you'll need to manually link our TCCore.xcframework to both your `tc_consent_plugin` target (and any other tc_* plugin target that you are using) & your `Runner` target on xcode. 
 
-More info here :   
-
-[xcframework Linking](https://github.com/CommandersAct/TCMobileDemo-flutter/blob/master/xcframework_linking.md)
-
 ## Configuration files :
 
 Depending on your use case, you may need to include the following json files into your app : 
