@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'tc_consent_plugin'
-  s.version          = '1.0.0'
+  s.version          = '1.2.0'
   s.summary          = 'CommandersAct\'s TCConsent Plugin'
   s.description      = <<-DESC
 A new Flutter plugin project.
@@ -16,8 +16,9 @@ A new Flutter plugin project.
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'
-  s.platform = :ios, '9.0'
-  s.vendored_frameworks = 'TCConsent.xcframework'
+  s.platform = :ios, '11.0'
+  s.dependency 'IOSV5-TCCore', '5.2.2'
+  s.dependency 'TCConsent', '5.1.4'
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
 end
