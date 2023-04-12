@@ -42,19 +42,23 @@
       TCPrivacyCenterViewController *PCM = [[TCPrivacyCenterViewController alloc] init];
       UIViewController *viewController = ((UIApplication *)[UIApplication sharedApplication]).delegate.window.rootViewController;
       [viewController presentViewController: PCM animated: YES completion: nil];
+      result(nil);
   }
   else if ([@"acceptAllConsent" isEqualToString:call.method])
   {
       [[TCMobileConsent sharedInstance] acceptAllConsent];
+      result(nil);
   }
   else if ([@"refuseAllConsent" isEqualToString:call.method])
   {
       [[TCMobileConsent sharedInstance] refuseAllConsent];
+      result(nil);
   }
   else if ([@"useAcString" isEqualToString:call.method])
   {
       NSNumber *val = [call.arguments objectForKey: @"useAcString"];
       [[TCMobileConsent sharedInstance] useAcString: [val boolValue]];
+      result(nil);
   }
   else if ([@"initWithCustomPCM" isEqualToString:call.method])
   {
@@ -68,20 +72,24 @@
   {
       NSNumber *val = [call.arguments objectForKey: @"months"];
       [[TCMobileConsent sharedInstance] setConsentDuration: [val floatValue]];
+      result(nil);
   }
   else if ([@"useCustomPublisherRestrictions" isEqualToString:call.method])
   {
       [[TCMobileConsent sharedInstance] useCustomPublisherRestrictions];
+      result(nil);
   }
   else if ([@"saveConsentFromPopUp" isEqualToString:call.method])
   {
       NSDictionary *val = [call.arguments objectForKey: @"consent"];
       [[TCMobileConsent sharedInstance] saveConsentFromPopUp: val];
+      result(nil);
   }
   else if ([@"saveConsent" isEqualToString:call.method])
   {
       NSDictionary *val = [call.arguments objectForKey: @"consent"];
       [[TCMobileConsent sharedInstance] saveConsent: val];
+      result(nil);
   }
   else if ([@"saveConsentFromConsentSourceWithPrivacyAction" isEqualToString:call.method])
   {
@@ -95,30 +103,37 @@
   else if ([@"statEnterPCToVendorScreen" isEqualToString:call.method])
   {
       [[TCMobileConsent sharedInstance] statEnterPCToVendorScreen];
+      result(nil);
   }
   else if ([@"statShowVendorScreen" isEqualToString:call.method])
   {
       [[TCMobileConsent sharedInstance] statShowVendorScreen];
+      result(nil);
   }
   else if ([@"statViewPrivacyPoliciesFromPrivacyCenter" isEqualToString:call.method])
   {
       [[TCMobileConsent sharedInstance] statViewPrivacyPoliciesFromPrivacyCenter];
+      result(nil);
   }
   else if ([@"statViewPrivacyCenter" isEqualToString:call.method])
   {
       [[TCMobileConsent sharedInstance] statViewPrivacyCenter];
+      result(nil);
   }
   else if ([@"statViewBanner" isEqualToString:call.method])
   {
       [[TCMobileConsent sharedInstance] statViewBanner];
+      result(nil);
   }
   else if ([@"statViewPrivacyPoliciesFromBanner" isEqualToString:call.method])
   {
       [[TCMobileConsent sharedInstance] statViewPrivacyPoliciesFromBanner];
+      result(nil);
   }
   else if ([@"statViewPrivacyPoliciesFromBanner" isEqualToString:call.method])
   {
       [[TCMobileConsent sharedInstance] statViewPrivacyPoliciesFromBanner];
+      result(nil);
   }
   else if ([@"getConsentAsJson" isEqualToString:call.method])
   {
@@ -133,6 +148,7 @@
   {
       NSString *languageCode = [call.arguments objectForKey: @"languageCode"];
       [[TCMobileConsent sharedInstance] setLanguage: languageCode];
+      result(nil);
   }
   else
   {

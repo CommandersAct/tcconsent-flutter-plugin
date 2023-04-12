@@ -1,3 +1,7 @@
+## 1.2.1
+
+* Dependency on TCCore switched to cocoapod.
+
 ## 1.2.0
 
 * Dependency on TCCore switched to cocoapod.
