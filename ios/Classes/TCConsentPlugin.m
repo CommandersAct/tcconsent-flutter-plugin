@@ -41,6 +41,8 @@
   {
       TCPrivacyCenterViewController *PCM = [[TCPrivacyCenterViewController alloc] init];
       UIViewController *viewController = ((UIApplication *)[UIApplication sharedApplication]).delegate.window.rootViewController;
+
+      [PCM setModalInPresentation: YES];
       [viewController presentViewController: PCM animated: YES completion: nil];
       result(nil);
   }
