@@ -1,11 +1,13 @@
 #import "TCConsentPlugin.h"
 #if __has_include(<TCConsent_IAB/TCPrivacyCallbacks.h>)
 #import <TCConsent_IAB/TCPrivacyCallbacks.h>
+#import <TCConsent_IAB/TCConsentAPI.h>
 #import <TCConsent_IAB/TCConsentConstants.h>
 #import <TCConsent_IAB/TCPrivacyCenterViewController.h>
 #import <TCConsent_IAB/TCMobileConsent.h>
 #else
 #import <TCConsent/TCPrivacyCallbacks.h>
+#import <TCConsent/TCConsentAPI.h>
 #import <TCConsent/TCConsentConstants.h>
 #import <TCConsent/TCPrivacyCenterViewController.h>
 #import <TCConsent/TCMobileConsent.h>
@@ -14,6 +16,7 @@
 @interface TCConsentPlugin ()
 
 @property (nonatomic, retain) FlutterMethodChannel* channel;
+@property (nonatomic, assign) BOOL blockIOSPrivacyCenterDropOut;
 
 @end
 
@@ -42,7 +45,15 @@
       TCPrivacyCenterViewController *PCM = [[TCPrivacyCenterViewController alloc] init];
       UIViewController *viewController = ((UIApplication *)[UIApplication sharedApplication]).delegate.window.rootViewController;
 
-      [PCM setModalInPresentation: YES];
+      if (@available(iOS 13.0, *))
+      {
+          [PCM setModalInPresentation: self.blockIOSPrivacyCenterDropOut];
+      }
+      else
+      {
+          [[TCLogger sharedInstance] logMessage: @"iOS 13 or higher API not available ! can't block modal Privacy Center." withLevel: TCLogLevel_Error];
+      }
+      
       [viewController presentViewController: PCM animated: YES completion: nil];
       result(nil);
   }
@@ -151,6 +162,57 @@
       NSString *languageCode = [call.arguments objectForKey: @"languageCode"];
       [[TCMobileConsent sharedInstance] setLanguage: languageCode];
       result(nil);
+  }
+  else if ([@"blockIOSPrivacyCenterDropOut" isEqualToString:call.method])
+  {
+      BOOL value = [[call.arguments objectForKey: @"value"] boolValue];
+      self.blockIOSPrivacyCenterDropOut = value;
+      result(nil);
+  }
+  else if ([@"isConsentAlreadyGiven" isEqualToString:call.method])
+  {
+      result([NSNumber numberWithBool: [TCConsentAPI isConsentAlreadyGiven]]);
+  }
+  else if ([@"getAllAcceptedConsent" isEqualToString:call.method])
+  {
+      result([TCConsentAPI getAllAcceptedConsent]);
+  }
+  else if ([@"getLastTimeConsentWasSaved" isEqualToString:call.method])
+  {
+      result([NSNumber numberWithLong: [TCConsentAPI getLastTimeConsentWasSaved]]);
+  }
+  else if ([@"isCategoryAccepted" isEqualToString:call.method])
+  {
+      int ID = [[call.arguments objectForKey: @"id"] intValue];
+      result([NSNumber numberWithBool: [TCConsentAPI isCategoryAccepted: ID]]);
+  }
+  else if ([@"isVendorAccepted" isEqualToString:call.method])
+  {
+      int ID = [[call.arguments objectForKey: @"id"] intValue];
+      result([NSNumber numberWithBool: [TCConsentAPI isVendorAccepted: ID]]);
+  }
+  else if ([@"isIABVendorAccepted" isEqualToString:call.method])
+  {
+      int ID = [[call.arguments objectForKey: @"id"] intValue];
+      result([NSNumber numberWithBool: [TCConsentAPI isIABVendorAccepted: ID]]);
+  }
+  else if ([@"isIABPurposeAccepted" isEqualToString:call.method])
+  {
+      int ID = [[call.arguments objectForKey: @"id"] intValue];
+      result([NSNumber numberWithBool: [TCConsentAPI isIABPurposeAccepted: ID]]);
+  }
+  else if ([@"isIABSpecialFeatureAccepted" isEqualToString:call.method])
+  {
+      int ID = [[call.arguments objectForKey: @"id"] intValue];
+      result([NSNumber numberWithBool: [TCConsentAPI isIABSpecialFeatureAccepted: ID]]);
+  }
+  else if ([@"getAcceptedCategories" isEqualToString:call.method])
+  {
+      result([TCConsentAPI getAcceptedCategories]);
+  }
+  else if ([@"shouldDisplayPrivacyCenter" isEqualToString:call.method])
+  {
+      result([NSNumber numberWithBool: [TCConsentAPI shouldDisplayPrivacyCenter]]);
   }
   else
   {

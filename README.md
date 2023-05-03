@@ -37,9 +37,6 @@ dependencies:
       ref: with_iab
 ```
 
-### [iOS only] manually linking TCCore :
-Since Flutter doesn't currently fully support SPM dependency, you'll need to manually link our TCCore.xcframework to both your `tc_consent_plugin` target (and any other tc_* plugin target that you are using) & your `Runner` target on xcode. 
-
 ## Configuration files :
 
 Depending on your use case, you may need to include the following json files into your app : 
@@ -87,6 +84,12 @@ class TCConsent
 
 ....
 ```
+
+### TCConsentAPI : 
+
+We created several methods to check given consent. They are simple, but make it easier to work with consent information at any given time. You'll find those in the class TCConsentAPI, more info [HERE](https://github.com/CommandersAct/iOSV5/tree/master/TCConsent#consent-internal-api). 
+
+
 
 # Demo app :
 

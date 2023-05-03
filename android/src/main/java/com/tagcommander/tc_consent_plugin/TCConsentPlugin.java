@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import com.tagcommander.lib.consent.ETCConsentAction;
 import com.tagcommander.lib.consent.ETCConsentSource;
 import com.tagcommander.lib.consent.TCConsent;
+import com.tagcommander.lib.consent.TCConsentAPI;
 import com.tagcommander.lib.consent.TCPrivacyCallbacks;
 import com.tagcommander.lib.consent.TCPrivacyCenter;
 import com.tagcommander.lib.core.TCUser;
@@ -144,6 +145,44 @@ public class TCConsentPlugin implements FlutterPlugin, MethodCallHandler, TCPriv
         String languageCode = call.argument("languageCode");
         TCConsent.getInstance().setLanguage(languageCode);
         result.success(null);
+        break;
+      case "isConsentAlreadyGiven":
+        result.success(TCConsentAPI.isConsentAlreadyGiven(context));
+        break;
+      case "getAllAcceptedConsent":
+        result.success(TCConsentAPI.getAllAcceptedConsent(context));
+        break;
+      case "getLastTimeConsentWasSaved":
+        result.success(TCConsentAPI.getLastTimeConsentWasSaved(context));
+        break;
+      case "isCategoryAccepted":
+        Integer category_id = call.argument("id");
+        result.success(TCConsentAPI.isCategoryAccepted(category_id, context));
+        break;
+      case "isVendorAccepted":
+        Integer vendor_id = call.argument("id");
+        result.success(TCConsentAPI.isVendorAccepted(vendor_id, context));
+        break;
+      case "isIABPurposeAccepted":
+        Integer iab_purpose_id = call.argument("id");
+        result.success(TCConsentAPI.isIABPurposeAccepted(iab_purpose_id, context));
+        break;
+      case "isIABVendorAccepted":
+        Integer iab_vendor_id = call.argument("id");
+        result.success(TCConsentAPI.isIABVendorAccepted(iab_vendor_id, context));
+        break;
+      case "isIABSpecialFeatureAccepted":
+        Integer iab_spec_feature_id = call.argument("id");
+        result.success(TCConsentAPI.isIABSpecialFeatureAccepted(iab_spec_feature_id, context));
+        break;
+      case "getAcceptedCategories":
+        result.success(TCConsentAPI.getAcceptedCategories(context));
+        break;
+//      case "getAcceptedGoogleVendors":
+//        result.success(TCConsentAPI.getAcceptedGoogleVendors(context));
+//        break;
+      case "shouldDisplayPrivacyCenter":
+        result.success(TCConsentAPI.shouldDisplayPrivacyCenter(context));
         break;
       default:
         result.notImplemented();

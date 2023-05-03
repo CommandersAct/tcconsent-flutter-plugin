@@ -20,6 +20,7 @@ class TCConsent
   static Function? consentOutdated;
   static Function? consentCategoryChanged;
   static Function? significantChangesInPrivacy;
+  static bool _blockIOSPrivacyCenterDropOut = false;
 
   Future<void> setSiteIDPrivacyID(int siteID, int privacyID) async
   {
@@ -158,4 +159,14 @@ class TCConsent
       TCUser.fromJson(schemes["user"]);
     }
   }
+
+  set blockIOSPrivacyCenterDropOut(bool value) {
+    if (defaultTargetPlatform  == TargetPlatform.iOS)
+    {
+      _blockIOSPrivacyCenterDropOut = value;
+      tcChannel.invokeMethod("blockIOSPrivacyCenterDropOut", {"value" : _blockIOSPrivacyCenterDropOut});
+    }
+  }
+
+  bool get blockIOSPrivacyCenterDropOut => _blockIOSPrivacyCenterDropOut;
 }

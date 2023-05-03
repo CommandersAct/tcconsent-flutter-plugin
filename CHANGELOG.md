@@ -1,3 +1,11 @@
+## 1.2.3
+
+* adding TCConsentAPI class
+
+## 1.2.2
+
+* preventing the dismissal of the privacy center modal
+
 ## 1.2.1
 
 * Dependency on TCCore switched to cocoapod.

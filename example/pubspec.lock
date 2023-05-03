@@ -148,16 +148,16 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "1.0.0"
+    version: "1.2.2"
   tccore_plugin:
     dependency: transitive
     description:
       path: "."
       ref: master
-      resolved-ref: d120e220e942513eef3929ec359ec4c2bf08490b
-      url: "https://gitlab.tagcommander.com/Hakim/tccore-flutter-plugin.git"
+      resolved-ref: dd464bec227e32c52c8963b3e326f81c185454f8
+      url: "https://github.com/CommandersAct/tccore_plugin.git"
     source: git
-    version: "0.0.1"
+    version: "1.0.0"
   term_glyph:
     dependency: transitive
     description:
