@@ -67,6 +67,13 @@ Please have a look on `lib/tc_consent.dart` & `example/lib/main.dart` for more d
 ```
   TCConsent consent = TCConsent();
   consent.setSiteIDPrivacyID(SITE_ID, PRIVACY_ID);
+   consent.showPrivacyCenter(); // to show Privacy Center for example
+```
+
+You can block the modal view of the privacy center by setting the following property to true : 
+
+```
+  consent.blockIOSPrivacyCenterDropOut = true;
 ```
 
 ### Privacy Callbacks : 
