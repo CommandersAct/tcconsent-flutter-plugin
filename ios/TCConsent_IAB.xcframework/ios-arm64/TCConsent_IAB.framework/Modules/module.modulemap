@@ -1,6 +1,0 @@
-framework module TCConsent_IAB {
-  umbrella header "TCConsent_IAB.h"
-
-  export *
-  module * { export * }
-}
