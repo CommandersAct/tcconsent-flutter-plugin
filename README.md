@@ -76,6 +76,13 @@ You can block the modal view of the privacy center by setting the following prop
   consent.blockIOSPrivacyCenterDropOut = true;
 ```
 
+[Non - IAB] you can use the following property to disable auto-privacy saving when exiting the privacy center : 
+
+```
+  consent.saveIOSConsentOnPrivacyCenterDropDown = false;
+```
+
+
 ### Privacy Callbacks : 
 
 Privacy callbacks are available as parameters in your TCConsent instance. 
