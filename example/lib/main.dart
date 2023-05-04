@@ -42,6 +42,7 @@ class _MyAppState extends State<MyApp> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+                buildTextButton('Disable save on drop out ', () => {consent.saveIOSConsentOnPrivacyCenterDropDown = false} ),
                 buildTextButton('Accept All Consent', consent.acceptAllConsent ),
                 buildTextButton('Refuse all consent', consent.refuseAllConsent ),
                 buildTextButton('Block privacy Center ',() => {consent.blockIOSPrivacyCenterDropOut = true} ),

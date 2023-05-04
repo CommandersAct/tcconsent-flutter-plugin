@@ -1,3 +1,7 @@
+## 1.2.4
+
+* adding saveIOSConsentOnPrivacyCenterDropDown property on TCConsent
+
 ## 1.2.3
 
 * adding TCConsentAPI class
