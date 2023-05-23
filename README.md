@@ -98,6 +98,14 @@ class TCConsent
 
 ....
 ```
+Please set your privacy callbacks BEFORE calling `setSiteIDPrivacyID`. 
+
+```
+    consent.setSiteIDPrivacyID(siteID, privacyID);
+    TCConsent.consentUpdated = (m) => {
+      print('The value of the consent is: $m')
+    };
+```
 
 ### TCConsentAPI : 
 
