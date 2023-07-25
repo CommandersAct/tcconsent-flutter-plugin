@@ -1,3 +1,7 @@
+## 1.2.5
+
+* Android dependencies points to fixed version
+
 ## 1.2.4
 
 * adding saveIOSConsentOnPrivacyCenterDropDown property on TCConsent
