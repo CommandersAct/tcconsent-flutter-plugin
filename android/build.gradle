@@ -32,7 +32,7 @@ android {
 
 dependencies{
     //Commanders Act SDK dependencies
-    api 'com.tagcommander.lib:core:5.3.3'
+    api 'com.tagcommander.lib:core:5.3.4'
+    api 'com.tagcommander.lib:Consent:5.2.6'
     api 'com.tagcommander.lib:TCIAB:5.0.0'
-    api 'com.tagcommander.lib:Consent:5.2.5'
 }
