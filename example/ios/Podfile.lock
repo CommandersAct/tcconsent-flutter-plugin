@@ -1,14 +1,14 @@
 PODS:
   - Flutter (1.0.0)
-  - IOSV5-TCCore (5.3.4)
-  - tc_consent_plugin (1.4.0):
+  - IOSV5-TCCore (5.4.0)
+  - tc_consent_plugin (1.4.1):
     - Flutter
-    - IOSV5-TCCore (= 5.3.4)
-    - TCConsent (= 5.2.1)
-  - TCConsent (5.2.1)
-  - tccore_plugin (1.1.0):
+    - IOSV5-TCCore (= 5.4.0)
+    - TCConsent (= 5.3.1)
+  - TCConsent (5.3.1)
+  - tccore_plugin (1.1.1):
     - Flutter
-    - IOSV5-TCCore (= 5.3.4)
+    - IOSV5-TCCore (= 5.4.0)
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
@@ -30,10 +30,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  IOSV5-TCCore: 012570fda14093f38fd9007d932d9829f7e4bdab
-  tc_consent_plugin: aeb1bbf5a669895ff367271d9f2b5714908b0bd2
-  TCConsent: d289c898135d490309562099bd00ede277c2f3d7
-  tccore_plugin: ec66db2c0b0024086d39cfeb736f1af423598f22
+  IOSV5-TCCore: c8553e0df90cab10cc8bc4aa8c37baea452021b0
+  tc_consent_plugin: c2a4a7505b34a0687f49648c360c1d9f07889b8d
+  TCConsent: ec222b6afa9419c634198bb8f778cd6dbaf27aa9
+  tccore_plugin: ef4fd214d359ae46aa5a133c782be5fd7ec02cf2
 
 PODFILE CHECKSUM: cf0c950f7e9a456b4e325f5b8fc0f98906a3705a
 
