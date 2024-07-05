@@ -20,10 +20,10 @@ dependencies:
   tc_consent_plugin:
     git:
       url: https://github.com/CommandersAct/tc-consent-plugin.git
-      ref: master
+      ref: *.*.*
 ```
 
-if you're using IAB, you'll need to use `TCConsent_IAB` variant available on `with_iab` branch.
+if you're using IAB, you'll need to use `TCConsent_IAB` variant available on `*.*.*-iab` releases.
 
 ```
 dependencies:
@@ -31,7 +31,7 @@ dependencies:
   tc_consent_plugin:
     git:
       url: https://github.com/CommandersAct/tc-consent-plugin.git
-      ref: with_iab
+      ref: *.*.*-iab
 ```
 
 ## Configuration files :
@@ -110,6 +110,20 @@ We created several methods to check given consent. They are simple, but make it 
 
 
 
-# Demo app :
 
-A demo app is available [Here](https://github.com/CommandersAct/TCMobileDemo-flutter)
+## Demo App : 
+
+A full example of a flutter application that implements the bridge is available in the following repository : 
+
+https://github.com/CommandersAct/TCMobileDemo-flutter.
+
+
+# Support & Contact : 
+
+Support : support@commandersact.com
+
+http://www.commandersact.com
+
+Commanders Act | 7b rue taylor - 75010 PARIS - France
+
+![Commanders Act logo](res/ca_logo.png)
