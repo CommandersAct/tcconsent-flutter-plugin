@@ -190,16 +190,16 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "1.4.0"
+    version: "1.4.2"
   tccore_plugin:
     dependency: transitive
     description:
       path: "."
-      ref: "1.2.0"
-      resolved-ref: "4aa5b5262d19fe7358b55936bd664cb3fd2c9e51"
+      ref: "1.2.2"
+      resolved-ref: "672babf8a312d7ba10f3a8e60f9d9438369b431b"
       url: "https://github.com/CommandersAct/tccore_plugin.git"
     source: git
-    version: "1.2.0"
+    version: "1.2.2"
   term_glyph:
     dependency: transitive
     description:
