@@ -1,19 +1,16 @@
 # CommandersAct's TCConsent flutter plugin
 
-A beta version of Commanders Act's TCConsent mobile lib
+Commanders Act's TCConsent mobile lib
 
 ## Getting Started
 
-This is a beta release, which means that the software is still in development and may contain bugs, errors, or other issues that could affect its performance or reliability. We recommend that you use this software for testing and evaluation purposes only, and not in a production environment or for critical workloads.
-
-
-While we have made every effort to ensure the quality and stability of this beta release, we cannot guarantee that it will work perfectly in every situation. If you encounter any issues or have any feedback, please report them to us so that we can improve the software for future releases.
+If you encounter any issues or have any feedback, please report them to us so that we can improve the software for future releases.
 
 It is important to have a look on both [Android](https://github.com/CommandersAct/AndroidV5/tree/master/TCConsent) and [IOS](https://github.com/CommandersAct/iosv5/tree/master/TCConsent) documentation to understand the basic functionning of the library. 
 
 ## Installation : 
 
-We'll be releasing this plugin on pub.dev once we finish our beta phase. as for now, you'll need to have a git plugin dependency. 
+We'll be releasing this plugin on pub.dev later on, for now you'll need to have a git plugin dependency. 
 
 On your pubspec.yaml, set : 
 
@@ -23,10 +20,10 @@ dependencies:
   tc_consent_plugin:
     git:
       url: https://github.com/CommandersAct/tc-consent-plugin.git
-      ref: master
+      ref: *.*.*
 ```
 
-if you're using IAB, you'll need to use `TCConsent_IAB` variant available on `with_iab` branch.
+if you're using IAB, you'll need to use `TCConsent_IAB` variant available on `*.*.*-iab` releases.
 
 ```
 dependencies:
@@ -34,15 +31,8 @@ dependencies:
   tc_consent_plugin:
     git:
       url: https://github.com/CommandersAct/tc-consent-plugin.git
-      ref: with_iab
+      ref: *.*.*-iab
 ```
-
-### [iOS only] manually linking TCCore :
-Since Flutter doesn't currently fully support SPM dependency, you'll need to manually link our TCCore.xcframework to both your `tc_consent_plugin` target (and any other tc_* plugin target that you are using) & your `Runner` target on xcode. 
-
-More info here :   
-
-[xcframework Linking](https://github.com/CommandersAct/TCMobileDemo-flutter/blob/master/xcframework_linking.md)
 
 ## Configuration files :
 
@@ -74,6 +64,7 @@ Please have a look on `lib/tc_consent.dart` & `example/lib/main.dart` for more d
 ```
   TCConsent consent = TCConsent();
   consent.setSiteIDPrivacyID(SITE_ID, PRIVACY_ID);
+   consent.showPrivacyCenter(); // to show Privacy Center for example
 ```
 
 You can block the modal view of the privacy center by setting the following property to true : 
@@ -81,6 +72,13 @@ You can block the modal view of the privacy center by setting the following prop
 ```
   consent.blockIOSPrivacyCenterDropOut = true;
 ```
+
+[Non - IAB] you can use the following property to disable auto-privacy saving when exiting the privacy center : 
+
+```
+  consent.saveIOSConsentOnPrivacyCenterDropDown = false;
+```
+
 
 ### Privacy Callbacks : 
 
@@ -97,7 +95,35 @@ class TCConsent
 
 ....
 ```
+Please set your privacy callbacks BEFORE calling `setSiteIDPrivacyID`. 
 
-# Demo app :
+```
+    consent.setSiteIDPrivacyID(siteID, privacyID);
+    TCConsent.consentUpdated = (m) => {
+      print('The value of the consent is: $m')
+    };
+```
 
-A demo app is available [Here](https://github.com/CommandersAct/TCMobileDemo-flutter)
+### TCConsentAPI : 
+
+We created several methods to check given consent. They are simple, but make it easier to work with consent information at any given time. You'll find those in the class TCConsentAPI, more info [HERE](https://github.com/CommandersAct/iOSV5/tree/master/TCConsent#consent-internal-api). 
+
+
+
+
+## Demo App : 
+
+A full example of a flutter application that implements the bridge is available in the following repository : 
+
+https://github.com/CommandersAct/TCMobileDemo-flutter.
+
+
+# Support & Contact : 
+
+Support : support@commandersact.com
+
+http://www.commandersact.com
+
+Commanders Act | 7b rue taylor - 75010 PARIS - France
+
+![Commanders Act logo](res/ca_logo.png)
