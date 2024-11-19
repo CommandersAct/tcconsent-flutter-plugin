@@ -19,6 +19,8 @@ A new Flutter plugin project.
   s.platform = :ios, '11.0'
   s.dependency 'IOSV5-TCCore', '5.4.1'
   s.dependency 'TCConsent', '5.3.5'
+  s.dependency 'IOSV5-TCCore', '5.4.0'
+  s.dependency 'TCConsent', '5.3.2'
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
 end
