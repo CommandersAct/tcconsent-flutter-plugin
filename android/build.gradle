@@ -8,7 +8,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.1.2'
+        classpath 'com.android.tools.build:gradle:8.7.2'
     }
 }
 
@@ -22,17 +22,19 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdk 31
+    compileSdk 35
 
+    namespace 'com.tagcommander.lib.tcconsent_plugin'
     defaultConfig {
-        minSdkVersion 17
+        minSdkVersion 21
         multiDexEnabled true
     }
 }
 
 dependencies{
     //Commanders Act SDK dependencies
-    api 'com.tagcommander.lib:core:5.4.6'
-    api 'com.tagcommander.lib:Consent:5.3.3'
-    api 'com.tagcommander.lib:TCIAB:5.0.0'
+
+    api 'com.tagcommander.lib:core:5.4.7'
+    api 'com.tagcommander.lib:Consent:5.3.5'
+    api 'com.tagcommander.lib:TCIAB:5.0.1'
 }
