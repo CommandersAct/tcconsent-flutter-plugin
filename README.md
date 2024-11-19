@@ -62,6 +62,7 @@ Simillar to Android and iOS SDKs, you'll need to create a TCConsent() instance a
 Please have a look on `lib/tc_consent.dart` & `example/lib/main.dart` for more details. 
 
 ```
+  TCDebug().setDebugLevel(TCLogLevel.TCLogLevel_Verbose);// optional but recommended to enable logs
   TCConsent consent = TCConsent();
   consent.setSiteIDPrivacyID(SITE_ID, PRIVACY_ID);
    consent.showPrivacyCenter(); // to show Privacy Center for example
