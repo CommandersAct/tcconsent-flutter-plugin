@@ -184,6 +184,9 @@ public class TCConsentPlugin implements FlutterPlugin, MethodCallHandler, TCPriv
       case "shouldDisplayPrivacyCenter":
         result.success(TCConsentAPI.shouldDisplayPrivacyCenter(context));
         break;
+        case "deactivateAndroidBackButton":
+          result.success(TCConsent.getInstance().deactivateBackButton = true);
+          break;
       default:
         result.notImplemented();
     }
