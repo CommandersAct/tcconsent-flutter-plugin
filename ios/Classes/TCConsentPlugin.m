@@ -262,4 +262,18 @@
     [self.channel invokeMethod: @"significantChangesInPrivacy" arguments: nil];
 }
 
+- (void) firebaseConsentChanged: (NSDictionary<NSString *,NSNumber *> *) firebaseConsent
+{
+    id appDelegate = [UIApplication sharedApplication].delegate;
+    
+    if ([appDelegate respondsToSelector:@selector(firebaseConsentChanged:)])
+    {
+        [appDelegate performSelector:@selector(firebaseConsentChanged:) withObject: firebaseConsent];
+    }
+    else
+    {
+        NSLog(@"AppDelegate does not respond to firebaseConsentChanged:");
+    }
+}
+
 @end
