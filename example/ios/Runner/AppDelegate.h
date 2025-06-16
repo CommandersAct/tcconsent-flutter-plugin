@@ -1,8 +1,8 @@
 #import <Flutter/Flutter.h>
 #import <UIKit/UIKit.h>
-#import "TCFirebaseDelegate.h"
+#import "TCFirebaseConsentDelegate.h"
 
-@interface AppDelegate : FlutterAppDelegate<TCFirebaseDelegate>
+@interface AppDelegate : FlutterAppDelegate<TCFirebaseConsentDelegate>
 
 
 @end
