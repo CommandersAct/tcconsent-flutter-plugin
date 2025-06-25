@@ -269,6 +269,8 @@
     if ([appDelegate respondsToSelector:@selector(firebaseConsentChanged:)])
     {
         [appDelegate performSelector:@selector(firebaseConsentChanged:) withObject: firebaseConsent];
+        
+        NSLog(@"firebaseConsentChanged: called on AppDelegate.");
     }
     else
     {
