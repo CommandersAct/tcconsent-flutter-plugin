@@ -1,30 +1,40 @@
 {
     "information": {
-        "update": "2021-08-01",
-        "version": "2",
-        "vendors": "8,241",
-        "google_vendors" : "323,389,385,424",
-        "consentDurationInMonths": 6,
-        "significantChanges": "",
-        "resetSave": ""
+        "update": "2020-09-09",
+        "version": "9",
+        "consentDurationInMonths": "1",
+        "resetSave": "1",
+        "vendors" : "27,28,210,402,413,263",
+        "google_vendors"  :"2107,2124,2130,2179,2981"
     },
     "components": {
-        "firstLayerButton": ["RefuseAll", "Detail", "AcceptAll"],
-        "secondLayerButton": ["RefuseAll", "Save", "AcceptAll"]
+        "firstLayerButton": [
+            "RefuseAll",
+            "AcceptAll",
+            "Detail"
+        ],
+        "secondLayerButton": [
+            "RefuseAll",
+            "Save",
+            "AcceptAll"
+        ]
     },
     "customisation": {
         "content": {
             "fontcolor": "#000000",
-            "backgroundcolor": "#ffffff",
+            "backgroundcolor": "#FFFFFF",
             "bordercolor": "#806423"
         },
         "button": {
-            "fontcolor": "#ffffff",
-            "backgroundcolor": "#4287f5",
+            "fontcolor": "#FFFFFF",
+            "backgroundcolor": "#4287F5",
             "disabledBackground": "#E1E1E1",
             "linkcolor": "#0907F7"
         },
-        "order": ["Custom", "IAB"]
+        "order": [
+            "IAB",
+            "Custom"
+        ]
     },
     "texts": {
         "generic": {
@@ -44,11 +54,7 @@
             "featureDef": "Features",
             "specialFeatureDef": "Special Features",
             "partnersLinkText": "our partners",
-            "relatedVendorsButton": "show related vendors",
-            "month": "month",
-            "day": "day",
-            "seconds": "seconds",
-            "hours": "hours"
+            "relatedVendorsButton": "show related vendors"
         },
         "popup": {
             "title": "We respect your privacy",
@@ -60,10 +66,7 @@
         },
         "purposes": {
             "title": "Find out more about how your personal data is processed and set your preferences below.",
-            "content": "You can set your consent preferences and determine how you want your data to be used based on the purposes below. You may set your preferences for us independently from those of third-party partners. Each purpose has a description so that you know how we and partners use your data.",
-            "privacy_policy_text": "Check our privacy policies",
-            "privacy_policy_url": "https://ourcompany.com/privacypolicies",
-            "consent_id_text": "User ID"
+            "content": "You can set your consent preferences and determine how you want your data to be used based on the purposes below. You may set your preferences for us independently from those of third-party partners. Each purpose has a description so that you know how we and partners use your data."
         },
         "vendors": {
             "title": "See the partners we work with below. Expend each one to see how they process your data.",
@@ -73,9 +76,8 @@
             "deviceStorageCookieLifetime": "Cookie lifetime: ",
             "deviceStorageOther": "Others",
             "deviceStorageCookies": "Cookies",
-            "googleVendorsDef" : "Google Ad Technology Providers",
-            "domainsDef" : "Domain list",
-            "IABVendorsDef" : "IAB TCF Vendors"
+            "domainsDef": "Domains list",
+            "googleVendorsDef": "Google ATP list"
         },
         "others": {
             "title_purpose": "Other categories EN",
@@ -100,11 +102,7 @@
             "featureDef": "Fonctionnalités",
             "specialFeatureDef": "Fonctionnalités spéciales",
             "partnersLinkText": "nos partenaires",
-            "relatedVendorsButton": "Voir les partenaires",
-            "month": "mois",
-            "day": "jours",
-            "seconds": "secondes",
-            "hours": "heures"
+            "relatedVendorsButton": "Voir les partenaires"
         },
         "popup": {
             "title": "Le respect de votre vie privée est notre priorité",
@@ -115,124 +113,157 @@
             "specialFeatureTitle": "Gérer vos specialFeatures"
         },
         "purposes": {
-            "title": "Gérer vos préférences P",
-            "content": "Nos partenaires P et nous déposons des cookies afin d'assurer la sécurité, améliorer votre expérience digitale et afficher des publicités et contenus personnalisés Vous pouvez accepter ou refuser ces différentes opérations.",
-            "privacy_policy_text": "Notre politique de confidentialitée",
-            "privacy_policy_url": "https://ourcompany.com/privacypolicies",
-            "consent_id_text": "ID D'utilisateur"
+            "title": "Découvrez comment vos données personnelles sont traitées et définissez vos préférences ci-dessous.",
+            "content": "Nos partenaires et nous déposons des cookies afin d'assurer la sécurité, améliorer votre expérience digitale et afficher des publicités et contenus personnalisés Vous pouvez accepter ou refuser ces différentes opérations."
         },
         "vendors": {
             "title": "Gérer vos préférences V",
             "content": "Nos partenaires V et nous déposons des cookies afin d'assurer la sécurité, améliorer votre expérience digitale et afficher des publicités et contenus personnalisés Vous pouvez accepter ou refuser ces différentes opérations.",
             "privacyPolicyText": "Politique de confidentialité",
             "deviceStorageTitle": "Type de stockage:",
-            "deviceStorageCookieLifetime": "Durée du cookie: ",
-            "deviceStorageOther": "Autres",
+            "deviceStorageCookieLifetime": "Durée de vie : ",
+            "deviceStorageOther": "Autres ",
             "deviceStorageCookies": "Cookies",
-            "googleVendorsDef" : "Partenaires Google Ad Technology",
-            "domainsDef" : "liste des domaines utilisés",
-            "IABVendorsDef" : "liste des partenaires IAB"
+            "domainsDef": "Liste des domaines",
+            "googleVendorsDef": "Liste des providers google"
         },
         "others": {
             "title_purpose": "Other categories FR",
             "title_vendors": "Other vendors FR"
         }
     },
-    "categories": [{
+    "categories": [
+        {
             "name": "Statistics",
             "ID": "1",
-            "isMandatory": "true",
-            "related_vendors": [1],
+            "related_vendors": [
+                1
+            ],
             "description": "These cookies allow us analyze user behavior on the site, measure and improve performance and the quality of our service."
         },
         {
             "name": "Advertising",
             "ID": "2",
-            "related_vendors": [2],
-            "description": "These cookies allow us display adverts matching your interests on the websites you visit."
+            "related_vendors": [
+                2
+            ],
+            "description": "These cookies allow us display adverts matching your interests on the websites you visit.",
+            "privacy_policy_url": "https://www.commandersact.com/en/privacy/1",
+            "privacy_policy_text": "Privacy policy\n"
         },
         {
             "name": "Big category",
-            "ID": "30",
+            "ID": "3",
+            "related_vendors": [
+                2
+            ],
             "description": "Here you can select the vendors.",
-            "subcategories": [{
+            "subcategories": [
+                {
                     "name": "GA",
-                    "ID": "31",
-                    "description": "Should we send information to GA."
+                    "ID": "4",
+                    "related_vendors": [
+                        1
+                    ],
+                    "description": "Should we send information to GA.",
+                    "privacy_policy_url": "https://www.google.com/analytics/terms/us.html",
+                    "privacy_policy_text": "Privacy policy\n"
                 },
                 {
                     "name": "Xiti",
                     "ID": "32",
+                    "related_vendors": [
+                        1
+                    ],
                     "description": "Should we send information to AT Internet."
                 },
                 {
                     "name": "Vendor3",
                     "ID": "33",
-                    "related_vendors": [1, 2],
+                    "related_vendors": [
+                        1,
+                        2
+                    ],
                     "description": "Should we send information to this vendor3."
                 }
             ]
         }
     ],
-    "vendors": [{
-            "name": "Commanders Act",
-            "ID": "1",
-            "description": "Allow Commanders Act",
-            "privacy_policy": "http://commandersact.com/privacypolicy"
-        },
+    "categories_fr": [
         {
-            "name": "Another Vendor",
-            "ID": "2",
-            "description": "The desc of another vendor",
-            "privacy_policy": "http://anothervendor.free.fr/privacypolicy"
-        }
-    ],
-    "categories_fr": [{
             "name": "Statistiques",
             "ID": "1",
-            "related_vendors": [1],
+            "related_vendors": [
+                1
+            ],
             "description": "Avec cette catégorie on remonte les stats."
         },
         {
             "name": "Pub",
             "ID": "2",
-            "related_vendors": [2],
+            "related_vendors": [
+                2
+            ],
             "description": "Pour afficher de superbes pubs personalisées"
         },
         {
             "name": "Super cat",
-            "ID": "30",
+            "ID": "3",
             "description": "Une super cat.",
-            "subcategories": [{
+            "related_vendors": [
+                2
+            ],
+            "subcategories": [
+                {
                     "name": "Sous cat 1",
-                    "ID": "31",
+                    "ID": "4",
+                    "related_vendors": [
+                        1
+                    ],
                     "description": "Mais on peut choisir que cette sous cat."
                 },
                 {
                     "name": "Sous cat 2",
                     "ID": "32",
+                    "related_vendors": [
+                        1
+                    ],
                     "description": "Ou alors uniquement celle-ci."
                 },
                 {
                     "name": "Sous cat 3",
                     "ID": "33",
-                    "related_vendors": [1, 2],
-                    "description": "Ou plus en fait, mais la 3 c'est pareil."
+                    "related_vendors": [
+                        1,
+                        2
+                    ],
+                    "description": "Ou plus en faait, mais la 3 c'est pareil."
                 }
             ]
         }
     ],
-    "vendors_fr": [{
-            "name": "Commanders Act",
+    "vendors": [
+        {
+            "name": "Commanders Act en",
             "ID": "1",
-            "description": "Permettre à Commanders Act d'envoyer des informations",
+            "description": "Allow Commanders Act ",
             "privacy_policy": "http://commandersact.com/privacypolicy"
         },
         {
-            "name": "Autre Vendors",
+            "name": "Another Vendor en ",
             "ID": "2",
-            "description": "Permettre à cet autre vendor d'envoyer pleins d'informations",
+            "description": "The desc of another vendor ",
             "privacy_policy": "http://anothervendor.free.fr/privacypolicy"
         }
-    ]
+    ],
+    "google_consent_mode": {
+            "use_consent_mode": true,
+            "infer_ad_from_tcf": false,
+            "category_mapping": {
+                "ad_storage": 1,
+                "ad_user_data": 2,
+                "ad_personalization": 3,
+                "analytics_storage": 4
+            }
+        }
 }
