@@ -117,7 +117,7 @@ The following documentation outlines the complete procedure for forwarding user 
 
 It covers the required JSON configuration, SDK integration steps, category-mapping details, and verification methods.
 
-https://github.com/CommandersAct/tcconsent-flutter-plugin/blob/master/res/GCM_documentation.md
+[See the detailed guide](./res/GCM_documentation.md)
 
 ## Demo App : 
 
