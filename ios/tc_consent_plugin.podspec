@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'tc_consent_plugin'
-  s.version          = '1.5.1'
+  s.version          = '1.5.2'
   s.summary          = 'CommandersAct\'s TCConsent Plugin'
   s.description      = <<-DESC
 A new Flutter plugin project.
