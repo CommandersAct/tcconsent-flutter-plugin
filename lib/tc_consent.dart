@@ -180,4 +180,12 @@ class TCConsent
   }
 
   bool get saveIOSConsentOnPrivacyCenterDropDown => _saveIOSConsentOnPrivacyCenterDropDown;
+
+  /// Should be called if user wants to disable the Android
+  /// back button when showing Privacy Center
+  void deactivateAndroidBackButton() {
+    if(defaultTargetPlatform == TargetPlatform.android){
+      tcChannel.invokeMethod('deactivateAndroidBackButton');
+    }
+  }
 }

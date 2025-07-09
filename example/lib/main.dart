@@ -47,6 +47,9 @@ class _MyAppState extends State<MyApp> {
                 buildTextButton('Refuse all consent', consent.refuseAllConsent ),
                 buildTextButton('Block privacy Center ',() => {consent.blockIOSPrivacyCenterDropOut = true} ),
                 buildTextButton('Show Privacy Center', consent.showPrivacyCenter ),
+                buildTextButton('Deactivate Android Back Button on Privacy Center',() {
+                  consent.deactivateAndroidBackButton();
+                }),
                 buildTextButton('Call use AC String',() {consent.useACString(true);} ),
                 buildTextButton('Init with Custom Privacy Center',() {consent.initWithCustomPCM(SITE_ID, PRIVACY_ID);} ),
                 buildTextButton('Use custom Publisher restrictions',() {consent.useCustomPublisherRestrictions();} ),
