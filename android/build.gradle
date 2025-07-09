@@ -1,5 +1,5 @@
 group 'com.tagcommander.tc_mobile_flutter_plugin'
-version '1.0'
+version '1.5.3'
 
 buildscript {
     repositories {
@@ -8,7 +8,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.7.2'
+        classpath 'com.android.tools.build:gradle:8.7.3'
     }
 }
 
@@ -35,6 +35,6 @@ dependencies{
     //Commanders Act SDK dependencies
 
     api 'com.tagcommander.lib:core:5.4.7'
-    api 'com.tagcommander.lib:Consent:5.3.6'
-    api 'com.tagcommander.lib:TCIAB:5.0.1'
+    api 'com.tagcommander.lib:Consent:5.3.7'
+    api 'com.tagcommander.lib:TCIAB:5.0.2'
 }
