@@ -21,7 +21,6 @@ class TCConsent
   static Function? consentCategoryChanged;
   static Function? significantChangesInPrivacy;
   static bool _blockIOSPrivacyCenterDropOut = false;
-  static bool _saveIOSConsentOnPrivacyCenterDropDown = true;
 
   Future<void> setSiteIDPrivacyID(int siteID, int privacyID) async
   {
@@ -170,16 +169,6 @@ class TCConsent
   }
 
   bool get blockIOSPrivacyCenterDropOut => _blockIOSPrivacyCenterDropOut;
-
-  set saveIOSConsentOnPrivacyCenterDropDown(bool value) {
-    if (defaultTargetPlatform  == TargetPlatform.iOS)
-    {
-      _saveIOSConsentOnPrivacyCenterDropDown = value;
-      tcChannel.invokeMethod("saveIOSConsentOnPrivacyCenterDropDown", {"value" : _saveIOSConsentOnPrivacyCenterDropDown});
-    }
-  }
-
-  bool get saveIOSConsentOnPrivacyCenterDropDown => _saveIOSConsentOnPrivacyCenterDropDown;
 
   /// Should be called if user wants to disable the Android
   /// back button when showing Privacy Center

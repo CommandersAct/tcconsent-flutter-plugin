@@ -17,7 +17,6 @@
 
 @property (nonatomic, retain) FlutterMethodChannel* channel;
 @property (nonatomic, assign) BOOL blockIOSPrivacyCenterDropOut;
-@property (nonatomic, assign) BOOL saveIOSConsentOnPrivacyCenterDropDown;
 
 @end
 
@@ -26,7 +25,6 @@
 + (void) registerWithRegistrar: (NSObject<FlutterPluginRegistrar>*) registrar
 {
     TCConsentPlugin* instance = [[TCConsentPlugin alloc] init];
-    instance.saveIOSConsentOnPrivacyCenterDropDown = true;
     instance.channel = [FlutterMethodChannel methodChannelWithName: @"tc_consent_flutter_plugin"
                                                                 binaryMessenger: [registrar messenger]];
     [registrar addMethodCallDelegate: instance channel: instance.channel];
@@ -45,7 +43,6 @@
   else if ([@"showPrivacyCenter" isEqualToString:call.method])
   {
       TCPrivacyCenterViewController *PCM = [[TCPrivacyCenterViewController alloc] init];
-      PCM.isPrivacySaved = !self.saveIOSConsentOnPrivacyCenterDropDown;
       UIViewController *viewController = ((UIApplication *)[UIApplication sharedApplication]).delegate.window.rootViewController;
 
       if (@available(iOS 13.0, *))
@@ -170,12 +167,6 @@
   {
       BOOL value = [[call.arguments objectForKey: @"value"] boolValue];
       self.blockIOSPrivacyCenterDropOut = value;
-      result(nil);
-  }
-  else if ([@"saveIOSConsentOnPrivacyCenterDropDown" isEqualToString:call.method])
-  {
-      BOOL value = [[call.arguments objectForKey: @"value"] boolValue];
-      self.saveIOSConsentOnPrivacyCenterDropDown = value;
       result(nil);
   }
   else if ([@"isConsentAlreadyGiven" isEqualToString:call.method])

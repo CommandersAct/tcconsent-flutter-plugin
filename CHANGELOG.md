@@ -1,10 +1,14 @@
-## 1.2.5
+## 1.5.4
 
-* Android dependencies points to fixed version
+- Update Android libraries
+    ~ Enhance hits metadata, adding right Http content-type headers. 
+    ~ /!\ Requires TCIAB 5.1.0+
+	+ TCF IAB v2.3 support.
 
-## 1.2.4
-
-* adding saveIOSConsentOnPrivacyCenterDropDown property on TCConsent
+- Update iOS libraries
+    ~ Enhance hits metadata, adding right Http content-type headers. 
+	~ vendors count fix for categories.
+	+ Supporting IAB TCF v2.3.
 
 ## 1.2.3
 

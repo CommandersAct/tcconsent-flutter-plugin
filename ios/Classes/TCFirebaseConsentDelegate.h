@@ -1,9 +1,9 @@
 //
 //  TCFirebaseConsentDelegate.h
-//  Pods
 //
-//  Created by Abdelhakim SAID on 25/06/2025.
+//  Created by Abdelhakim SAID on 11/06/2025.
 //
+
 #import <Foundation/Foundation.h>
 
 @protocol TCFirebaseConsentDelegate <NSObject>
