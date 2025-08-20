@@ -1,5 +1,25 @@
 group 'com.tagcommander.tc_mobile_flutter_plugin'
-version '1.5.3'
+
+def getPubspecVersion() {
+
+    def pubspec = new File(projectDir.parentFile, "pubspec.yaml")
+    if (!pubspec.exists()) {
+        throw new GradleException("pubspec.yaml not found at ${pubspec.absolutePath}")
+    }
+    def text = pubspec.getText("UTF-8")
+    // Matches e.g. 1.2.3, 1.2.3+4, 1.2.3-dev.1, etc.
+    def m = (text =~ /(?m)^\s*version:\s*([0-9]+\.[0-9]+\.[0-9]+(?:[+-][0-9A-Za-z\.\-]+)?)\s*$/)
+    if (!m.find()) {
+        throw new GradleException("version field not found in pubspec.yaml")
+    }
+    return m.group(1)
+}
+
+ext {
+    PLUGIN_VERSION = getPubspecVersion()
+}
+
+version PLUGIN_VERSION
 
 buildscript {
     repositories {
@@ -34,7 +54,7 @@ android {
 dependencies{
     //Commanders Act SDK dependencies
 
-    api 'com.tagcommander.lib:core:5.4.7'
-    api 'com.tagcommander.lib:Consent:5.3.7'
-    api 'com.tagcommander.lib:TCIAB:5.0.2'
+    api 'com.tagcommander.lib:core:5.4.8'
+    api 'com.tagcommander.lib:Consent:5.3.8'
+    api 'com.tagcommander.lib:TCIAB:5.1.0'
 }
