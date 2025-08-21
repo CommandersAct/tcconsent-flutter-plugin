@@ -1,3 +1,7 @@
+## 1.5.5
+
+- Update tccore_plugin dart dependency. 
+
 ## 1.5.4
 
 - Update Android libraries
