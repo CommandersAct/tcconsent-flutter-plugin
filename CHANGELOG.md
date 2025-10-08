@@ -1,3 +1,8 @@
+## 1.5.6
+
+- Update Android libraries :
+    ~ Binaries dependencies leak fix. 
+
 ## 1.5.5
 
 - Update tccore_plugin dart dependency. 
