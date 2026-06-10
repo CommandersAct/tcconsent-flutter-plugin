@@ -1,3 +1,8 @@
+## 1.5.7
+
+- Fixed Privacy Center not showing on apps using UIScene lifecycle, required by latest Flutter versions.
+- Updated android dependencies.
+
 ## 1.5.6
 
 - Update Android libraries :
