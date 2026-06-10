@@ -55,5 +55,5 @@ dependencies{
     //Commanders Act SDK dependencies
 
     api 'com.tagcommander.lib:core:5.4.9'
-    api 'com.tagcommander.lib:Consent:5.3.9'
+    api 'com.tagcommander.lib:Consent:5.3.10'
 }

@@ -43,7 +43,23 @@
   else if ([@"showPrivacyCenter" isEqualToString:call.method])
   {
       TCPrivacyCenterViewController *PCM = [[TCPrivacyCenterViewController alloc] init];
-      UIViewController *viewController = ((UIApplication *)[UIApplication sharedApplication]).delegate.window.rootViewController;
+      UIViewController *viewController = nil;
+
+      if (@available(iOS 13.0, *))
+      {
+          UIWindowScene *scene = (UIWindowScene *)[[[[UIApplication sharedApplication] connectedScenes]
+              objectsPassingTest:^BOOL(UIScene *s, BOOL *stop) {
+                  return s.activationState == UISceneActivationStateForegroundActive
+                         && [s isKindOfClass:[UIWindowScene class]];
+              }] anyObject];
+          viewController = scene.windows.firstObject.rootViewController;
+      }
+
+      // Fallback for iOS 12 and below
+      if (!viewController)
+      {
+          viewController = ((UIApplication *)[UIApplication sharedApplication]).delegate.window.rootViewController;
+      }
 
       if (@available(iOS 13.0, *))
       {
@@ -53,7 +69,7 @@
       {
           [[TCLogger sharedInstance] logMessage: @"iOS 13 or higher API not available ! can't block modal Privacy Center." withLevel: TCLogLevel_Error];
       }
-      
+
       [viewController presentViewController: PCM animated: YES completion: nil];
       result(nil);
   }

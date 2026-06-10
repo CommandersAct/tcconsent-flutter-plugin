@@ -1,11 +1,11 @@
 name: tc_consent_plugin
 description: CommandersAct mobile SDKs flutter plugin.
-version: 1.5.6
+version: 1.5.7
 homepage:
 
 environment:
-  sdk: '>=2.18.5 <3.0.0'
-  flutter: ">=2.5.0"
+  sdk: '>=2.18.5 <4.0.0'
+  flutter: ">=3.0.0"
 
 dependencies:
   flutter:
@@ -15,7 +15,7 @@ dependencies:
   tccore_plugin:
     git:
       url: https://github.com/CommandersAct/tccore_plugin.git
-      ref: 1.3.3
+      ref: 1.3.4
 
 dev_dependencies:
   flutter_test:
