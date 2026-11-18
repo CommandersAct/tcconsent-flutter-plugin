@@ -1,17 +1,9 @@
-#import "TCConsentPlugin.h"
-#if __has_include(<TCConsent_IAB/TCPrivacyCallbacks.h>)
-#import <TCConsent_IAB/TCPrivacyCallbacks.h>
-#import <TCConsent_IAB/TCConsentAPI.h>
-#import <TCConsent_IAB/TCConsentConstants.h>
-#import <TCConsent_IAB/TCPrivacyCenterViewController.h>
-#import <TCConsent_IAB/TCMobileConsent.h>
-#else
+#import "./include/tc_consent_plugin/TCConsentPlugin.h"
 #import <TCConsent/TCPrivacyCallbacks.h>
 #import <TCConsent/TCConsentAPI.h>
 #import <TCConsent/TCConsentConstants.h>
 #import <TCConsent/TCPrivacyCenterViewController.h>
 #import <TCConsent/TCMobileConsent.h>
-#endif
 
 @interface TCConsentPlugin ()
 
@@ -43,32 +35,20 @@
   else if ([@"showPrivacyCenter" isEqualToString:call.method])
   {
       TCPrivacyCenterViewController *PCM = [[TCPrivacyCenterViewController alloc] init];
-      UIViewController *viewController = nil;
+      UIWindowScene *scene = (UIWindowScene *)[[[[UIApplication sharedApplication] connectedScenes]
+          objectsPassingTest:^BOOL(UIScene *s, BOOL *stop) {
+              return s.activationState == UISceneActivationStateForegroundActive
+                     && [s isKindOfClass:[UIWindowScene class]];
+          }] anyObject];
+      UIViewController *viewController = scene.windows.firstObject.rootViewController;
 
-      if (@available(iOS 13.0, *))
-      {
-          UIWindowScene *scene = (UIWindowScene *)[[[[UIApplication sharedApplication] connectedScenes]
-              objectsPassingTest:^BOOL(UIScene *s, BOOL *stop) {
-                  return s.activationState == UISceneActivationStateForegroundActive
-                         && [s isKindOfClass:[UIWindowScene class]];
-              }] anyObject];
-          viewController = scene.windows.firstObject.rootViewController;
-      }
-
-      // Fallback for iOS 12 and below
+      // Fallback for apps that don't use scenes
       if (!viewController)
       {
           viewController = ((UIApplication *)[UIApplication sharedApplication]).delegate.window.rootViewController;
       }
 
-      if (@available(iOS 13.0, *))
-      {
-          [PCM setModalInPresentation: self.blockIOSPrivacyCenterDropOut];
-      }
-      else
-      {
-          [[TCLogger sharedInstance] logMessage: @"iOS 13 or higher API not available ! can't block modal Privacy Center." withLevel: TCLogLevel_Error];
-      }
+      [PCM setModalInPresentation: self.blockIOSPrivacyCenterDropOut];
 
       [viewController presentViewController: PCM animated: YES completion: nil];
       result(nil);

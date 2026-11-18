@@ -1,3 +1,10 @@
+## 1.6.0
+
+- [iOS] Native SDK now pulled with Swift Package Manager from [iOSV5-spm](https://github.com/CommandersAct/iOSV5-spm) (5.6.0). CocoaPods is no longer supported: the podspec has been removed.
+- [iOS] Minimum iOS version is now 15.0.
+- Minimum Flutter version is now 3.44.0.
+- Requires tccore_plugin 1.4.0.
+
 ## 1.5.7
 
 - Fixed Privacy Center not showing on apps using UIScene lifecycle, required by latest Flutter versions.
