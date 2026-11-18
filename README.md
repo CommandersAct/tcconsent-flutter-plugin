@@ -23,7 +23,7 @@ dependencies:
       ref: *.*.*
 ```
 
-if you're using IAB, you'll need to use `TCConsent_IAB` variant available on `*.*.*-iab` releases.
+if you're using IAB, you'll need to use the IAB variant (it adds the `TCIAB` module) available on `*.*.*-iab` releases.
 
 ```
 dependencies:

@@ -54,6 +54,6 @@ android {
 dependencies{
     //Commanders Act SDK dependencies
 
-    api 'com.tagcommander.lib:core:5.4.9'
-    api 'com.tagcommander.lib:Consent:5.3.10'
+    api 'com.tagcommander.lib:core:5.6.0'
+    api 'com.tagcommander.lib:Consent:5.5.0'
 }

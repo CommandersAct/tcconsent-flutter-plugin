@@ -6,5 +6,5 @@ package com.tagcommander.tc_consent_plugin;
 
 public class TCConsentFlutterGenerated
 {
-    public static final String version = "1.5.7";
+    public static final String version = "1.6.0";
 }
